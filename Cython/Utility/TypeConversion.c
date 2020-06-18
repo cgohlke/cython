@@ -404,7 +404,7 @@ static CYTHON_INLINE Py_ssize_t __Pyx_PyIndex_AsSsize_t(PyObject* b) {
     const Py_ssize_t size = Py_SIZE(b);
     // handle most common case first to avoid indirect branch and optimise branch prediction
     if (likely(__Pyx_sst_abs(size) <= 1)) {
-        ival = likely(size) ? digits[0] : 0;
+        ival = likely(size) ? (Py_ssize_t)(digits[0]) : 0;
         if (size == -1) ival = -ival;
         return ival;
     } else {
